@@ -1,0 +1,28 @@
+# Project Documentation
+
+## Overview
+
+This project is a Node.js application using Express.js to set up a basic server with error handling and logging capabilities. It uses several middleware components for functionality such as logging, error handling, and CORS (Cross-Origin Resource Sharing).
+
+## File: `app.js` (Entry point)
+
+### Purpose
+
+This file serves as the entry point for the application. It sets up and configures the Express.js server, handles middleware, and manages error handling.
+
+### Dependencies
+
+- `dotenv`: Loads environment variables from a `.env` file.
+- `express`: Framework for building the web server.
+- `morgan`: HTTP request logger middleware.
+- `colors`: Provides color styling for console output.
+- `cors`: Middleware for handling CORS.
+- `./middleware/error`: Custom error handling middleware and class.
+
+### Middleware Setup
+
+1. **Environment Variables**:
+   PORT
+   WHITE_LISTED_DOMAINS
+   const dotenv = require("dotenv");
+   dotenv.config({ path: "./config/config.env" });

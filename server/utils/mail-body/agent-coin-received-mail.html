@@ -1,0 +1,52 @@
+<html>
+    <head>
+      <style>
+        .container {
+          font-family: Arial, sans-serif;
+          line-height: 1.8;
+          color: #333333;
+          max-width: 600px;
+          margin: 0 auto;
+          border: 1px solid #e0e0e0;
+          padding: 20px;
+          background-color: #ffffff;
+        }
+        .header {
+          background-color: #28a745;
+          color: white;
+          padding: 15px;
+          text-align: center;
+          border-bottom: 2px solid #218838;
+        }
+        .content {
+          padding: 20px;
+          color: #555555;
+        }
+        .footer {
+          background-color: #f8f9fa;
+          padding: 15px;
+          text-align: center;
+          font-size: 13px;
+          color: #777777;
+          border-top: 1px solid #e0e0e0;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          <h2>Commission Received</h2>
+        </div>
+        <div class="content">
+          <p>Dear ${agentName},</p>
+          <p>We are pleased to inform you that you have received a commission of <strong>${receivedCoin}</strong> coins for the booking with ID <strong>${bookingId}</strong>.</p>
+          <p>Thank you for your continued partnership. If you have any questions or need further assistance, please do not hesitate to contact us.</p>
+          <p>Best regards,</p>
+          <p>GSOE Team</p>
+        </div>
+        <div class="footer">
+          <p>GSOE | Call Us: 9836859459 | Email: support@gsoe.com</p>
+        </div>
+      </div>
+    </body>
+    </html>
