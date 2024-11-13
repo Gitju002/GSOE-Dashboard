@@ -59,30 +59,30 @@ To set up the GSOE Dashboard locally, follow these steps:
    NODE_ENV=DEVLOPMENT
    # database
    MONGO_URI=
-  DB_NAME=
-  # mail
-  MAIL_PASSWORD=
-  MAIL_ID=
-  EMAIL_PORT=
-  EMAIL_HOST=
-  EMAIL_SERVICE=
-  EMAIL_SECURE=
-  # razorpay
-  RAZORPAY_KEY_SECRET=
-  RAZORPAY_KEY_ID=
-  # auth
-  SESSION_SECRET=
-  PASSWORD_SALT=
-  JWT_COOKIE_EXPIRE=
-  JWT_SECRET=
-  JWT_EXPIRE_IN=
-  # URLS
-  FRONTEND_URL=http://localhost:5173
-  WHITE_LISTED_DOMAINS=["http://localhost:5173/", "http://localhost:5173"]
-  BACKEND_URL=http://localhost:5000
-  # Not needed
-  OTP_EXPIRE_IN_SEC=300
-  AGENT_COMMISSION=0.02
+   DB_NAME=
+   # mail
+   MAIL_PASSWORD=
+   MAIL_ID=
+   EMAIL_PORT=
+   EMAIL_HOST=
+   EMAIL_SERVICE=
+   EMAIL_SECURE=
+   # razorpay
+   RAZORPAY_KEY_SECRET=
+   RAZORPAY_KEY_ID=
+   # auth
+   SESSION_SECRET=
+   PASSWORD_SALT=
+   JWT_COOKIE_EXPIRE=
+   JWT_SECRET=
+   JWT_EXPIRE_IN=
+   # URLS
+   FRONTEND_URL=http://localhost:5173
+   WHITE_LISTED_DOMAINS=["http://localhost:5173/", "http://localhost:5173"]
+   BACKEND_URL=http://localhost:5000
+   # Not needed
+   OTP_EXPIRE_IN_SEC=300
+   AGENT_COMMISSION=0.02
    ```
    
 4. Run the Application: Use the following command to start the application locally.
