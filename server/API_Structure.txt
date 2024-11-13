@@ -1,0 +1,386 @@
+1. Agent Register
+Endpoint: POST /agent/register
+Request:
+
+
+{
+    "image": "image_file",
+    "fullName": "Agent Name",
+    "email": "agent@example.com",
+    "phone": "1234567890"
+}
+What to Do:
+1.	Validate Request Variables: Ensure image, fullName, email, and phone are provided and valid.
+2.	Create Agent ID: Generate a unique agentId.
+3.	Upload Avatar to Cloudinary: Upload the image to Cloudinary and get the URL.
+4.	Create Record with Default totalCoins: Create a record in the database with totalCoins set to 0.
+5.	Send Email to Agent: Send a registration confirmation email to the provided email.
+Response:
+{
+    "success": true,
+    "message": "Agent registered successfully",
+    "data": "no data"
+}
+================================================================================
+
+3. Update Agent
+Endpoint: PUT /agent/update
+Request:
+
+
+{
+    "image": "new_image_file",
+    "fullName": "New Agent Name",
+    "email": "newagent@example.com",
+    "phone": "0987654321",
+    "totalCoins": 10
+}
+What to Do:
+1.	Image Update: If image is changed, delete the previous image from Cloudinary and upload the new one.
+2.	Schema Update: Update other fields in the database if they are changed.
+Response:
+
+
+{
+    "success": true,
+    "message": "Agent updated successfully",
+    "data": "no data"
+}
+================================================================================
+
+4. Delete Agent
+Endpoint: DELETE /agent/delete
+Request:
+
+
+{
+    "agentId": "agent_id"
+}
+What to Do:
+1.	Find and Delete Agent: Locate the agent by agentId and delete the record.
+Response:
+
+
+{
+    "success": true,
+    "message": "Agent deleted successfully",
+    "data": "no data"
+}
+================================================================================
+
+5. Get All Agents (With Pagination)
+Endpoint: GET /agent/all
+Request:
+
+
+{
+    "page": 1,
+    "limit": 10
+}
+What to Do:
+1.	Retrieve Data: Fetch data according to page and limit.
+Response:
+
+
+{
+    "success": true,
+    "message": "",
+    "data": [
+        {
+            "image": "image_url",
+            "fullName": "Agent Name",
+            "email": "agent@example.com",
+            "phone": "1234567890",
+            "totalCoins": 0
+        },
+        ...
+    ]
+}
+================================================================================
+
+6. Register Traveller
+Endpoint: POST /traveller/register
+Request:
+
+
+{
+    "image": "image_file",
+    "fullName": "Traveller Name",
+    "email": "traveller@example.com",
+    "phone": "1234567890"
+}
+What to Do:
+1.	Validate Request Variables: Ensure image, fullName, email, and phone are provided and valid.
+2.	Create Traveller ID: Generate a unique travellerId.
+3.	Upload Avatar to Cloudinary: Upload the image to Cloudinary and get the URL.
+4.	Create Record: Create a record in the database.
+5.	Send Email to Traveller: Send a registration confirmation email to the provided email.
+================================================================================
+
+8. Get All Travellers (With Pagination)
+Endpoint: GET /traveller/all
+Request:
+{
+    "page": 1,
+    "limit": 10
+}
+What to Do:
+1.	Retrieve Data: Fetch data according to page and limit.
+Response:
+
+
+{
+    "success": true,
+    "message": "",
+    "data": [
+        {
+            "image": "image_url",
+            "fullName": "Traveller Name",
+            "email": "traveller@example.com",
+            "phone": "1234567890"
+        },
+        ...
+    ]
+}
+================================================================================
+
+9. Update Traveller
+Endpoint: PUT /traveller/update
+Request:
+
+
+{
+    "image": "new_image_file",
+    "fullName": "New Traveller Name",
+    "email": "newtraveller@example.com",
+    "phone": "0987654321",
+    "totalCoins": 10
+}
+What to Do:
+1.	Image Update: If image is changed, delete the previous image from Cloudinary and upload the new one.
+2.	Schema Update: Update other fields in the database if they are changed.
+Response:
+
+
+{
+    "success": true,
+    "message": "Traveller updated successfully",
+    "data": "no data"
+}
+================================================================================
+
+10. Delete Traveller
+Endpoint: DELETE /traveller/delete
+Request:
+
+
+{
+    "travellerId": "traveller_id"
+}
+What to Do:
+1.	Find and Delete Traveller: Locate the traveller by travellerId and delete the record.
+Response:
+
+
+{
+    "success": true,
+    "message": "Traveller deleted successfully",
+    "data": "no data"
+}
+================================================================================
+
+11. Booking
+Endpoint: POST /booking
+Request:
+
+
+{
+    "travellerId": "traveller_id",
+    "amount": 1000,
+    "startDate": "2024-08-10",
+    "endDate": "2024-08-15",
+    "venue": "venue_location",
+    "packageType": "diamond",
+    "packageOptions": "option1, option2"
+}
+What to Do:
+1.	Send Mail to User: Notify the user of the booking.
+2.	Create Travel Record: Create a record with tourAction set to Not Started (default).
+3.	Set Timer for tourAction: Automatically change tourAction to Started and Completed, with the possibility of manual cancellation.
+4.	Send Mail on Tour Action Change: Notify the user on every change of tourAction.
+Response:
+
+
+{
+    "success": true,
+    "message": "Booking created successfully",
+    "data": "booking_id"
+}
+================================================================================
+
+14. Payment API
+Endpoint: POST /payment/create-order
+Request:
+
+
+{
+    "bookingId": "bookingId",
+    "amount": 10000,
+}
+Response:
+•	Success:
+{
+    "success": true,
+    "message": "Order Created Successfully",
+    "data": orderOptions of  Rozorpay
+}
+•	Failure:
+{
+    "success": false,
+    "message": "Payment failed",
+    "data": {
+        "error": "error_message"
+    }
+}
+
+================================================================================
+
+16. Forget password
+Endpoint: GET /operator/forget-password
+Request:
+{
+    operatorId
+}
+Response:
+•	Success:
+{
+    "success": true,
+    "message": "OTP sent to your mail successfully",
+    "data": no data
+}
+================================================================================
+
+17. Update Tour
+Endpoint: GET /operator/tour/update
+Request:
+{
+    toueId,
+    packageType,
+    packageOption
+}
+Response:
+•	Success:
+{
+    "success": true,
+    "message": "Tour Updated Successfully",
+    "data": no data
+}
+================================================================================
+
+18. Get all referral bookings(with pagination and search)
+Endpoint: GET /operator/referral-bookings/get-all
+Request:
+{
+    page,
+    limit,
+    search,
+    startDate,
+    endDate
+}
+Response:
+•	Success:
+{
+    "success": true,
+    "message": "Booking data fetched successfully",
+    "data": Array of booking data objects
+}
+================================================================================
+
+19. Get all direct bookings(with pagination and search)
+Endpoint: GET /operator/direct-bookings/get-all
+Request:
+{
+    page,
+    limit,
+    search,
+    startDate,
+    endDate
+}
+Response:
+•	Success:
+{
+    "success": true,
+    "message": "Booking data fetched successfully",
+    "data": Array of booking data objects
+}
+================================================================================
+
+
+21. Change password
+Endpoint: PUT /operator/change-password
+Request:
+{
+    old password,
+    new password
+}
+Response:
+•	Success:
+{
+    "success": true,
+    "message": "Profile picture updated successfully",
+    "data": no data
+}
+================================================================================
+
+22. Payment API
+Endpoint: POST /payment/verify-payment
+Request:
+{
+    rozropay Response data (orderId,transaction_id,signature etc)
+}
+Response:
+•Success:
+{
+    "success": true,
+    "message": "Payment successful",
+    "data": PaymentId
+}
+•Failure:
+{
+    "success": false,
+    "message": "Payment failed",
+    "data": {
+        "error": "error_message"
+    }
+}
+================================================================================
+
+23. Get Transaction Details(with pagination and search)
+Endpoint: POST /accounts/transaction-details
+Request:
+{
+    rozropay Response data (orderId,transaction_id,signature etc)
+}
+Response:
+•Success:
+{
+    "success": true,
+    "message": "Payment successful",
+    "data": PaymentId
+}
+•Failure:
+{
+    "success": false,
+    "message": "Payment failed",
+    "data": {
+        "error": "error_message"
+    }
+}
+
+
+
+
+
+
+Work CheckList:
+https://docs.google.com/document/d/1dXDmFZOyxOvRFCmZVMhf07gO6EWXSMazMPei8N6-VxE/edit
